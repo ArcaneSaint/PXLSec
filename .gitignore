@@ -6,6 +6,10 @@
 *.exe
 *.o
 *.so
+
+# VStudio Objects #
+###################
+obj/
  
 # Packages #
 ############
