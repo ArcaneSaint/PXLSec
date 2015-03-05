@@ -75,7 +75,6 @@ namespace Crypto
 			ICryptoTransform transform = provider.CreateEncryptor(provider.Key, provider.IV);
 			MemoryStream memStream = new MemoryStream();
 			CryptoStream cryptoStream = new CryptoStream(memStream, transform, CryptoStreamMode.Write);
-
 			cryptoStream.Write(source, 0, source.Length);
 			cryptoStream.FlushFinalBlock();
 
@@ -106,28 +105,6 @@ namespace Crypto
 			memStream.Read(result, 0, result.Length);
 
 			return result;
-		}
-		#endregion
-		#region TODO
-		/// <summary>
-		/// Verifies if a given key is a valid TripleDES Key.
-		/// </summary>
-		/// <param name="key"></param>
-		/// <returns></returns>
-		public static bool verifyKey(byte[] key)
-		{
-			//TODO
-			throw new NotImplementedException();
-		}
-		/// <summary>
-		/// Takes a key, and truncates/pads it to make it a valid key.
-		/// </summary>
-		/// <param name="key"></param>
-		/// <returns></returns>
-		public static byte[] sanitizeKey(byte[] key)
-		{
-			//TODO
-			throw new NotImplementedException();
 		}
 		#endregion
 	}
