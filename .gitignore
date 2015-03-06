@@ -10,6 +10,7 @@
 # VStudio Objects #
 ###################
 obj/
+bin/
  
 # Packages #
 ############

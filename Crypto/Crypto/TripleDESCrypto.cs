@@ -27,7 +27,7 @@ namespace Crypto
 		/// </summary>
 		public TripleDESCrypto()
 		{
-			TripleDESCryptoServiceProvider provider = new TripleDESCryptoServiceProvider();
+			provider = new TripleDESCryptoServiceProvider();
 			provider.GenerateKey();
 			provider.GenerateIV();
 		}
@@ -35,9 +35,10 @@ namespace Crypto
 		/// Initializes A new TripleDESCrypto instance. Generates an IV
 		/// </summary>
 		/// <param name="key">The Key to be used for encrypting/decrypting</param>
+		/// /// <exception cref="CryptographicException">Thrown when provided Key is invalid.</exception>
 		public TripleDESCrypto(byte[] key)
 		{
-			TripleDESCryptoServiceProvider provider = new TripleDESCryptoServiceProvider();
+			provider = new TripleDESCryptoServiceProvider();
 			provider.Key = key;
 			provider.GenerateIV();
 		}
@@ -46,9 +47,10 @@ namespace Crypto
 		/// </summary>
 		/// <param name="key">The Key to be used for encrypting/decrypting</param>
 		/// <param name="iv">The Initialization Vector to be used for encrypting/decrypting</param>
+		/// <exception cref="CryptographicException">Thrown when provided Key or IV is invalid.</exception>
 		public TripleDESCrypto(byte[] key, byte[] iv)
 		{
-			TripleDESCryptoServiceProvider provider = new TripleDESCryptoServiceProvider();
+			provider = new TripleDESCryptoServiceProvider();
 			provider.Key = key;
 			provider.IV = iv;
 		}
