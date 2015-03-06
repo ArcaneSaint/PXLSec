@@ -35,7 +35,7 @@ namespace Crypto
 		/// Initializes A new TripleDESCrypto instance. Generates an IV
 		/// </summary>
 		/// <param name="key">The Key to be used for encrypting/decrypting</param>
-		/// /// <exception cref="CryptographicException">Thrown when provided Key is invalid.</exception>
+		/// <exception cref="CryptographicException">Thrown when provided Key is invalid.</exception>
 		public TripleDESCrypto(byte[] key)
 		{
 			provider = new TripleDESCryptoServiceProvider();

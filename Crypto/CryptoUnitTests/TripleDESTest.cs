@@ -22,13 +22,13 @@ namespace CryptoUnitTests
 			Assert.IsNotNull(crypto);
 		}
 		[TestMethod]
-		public void EmptyConstructorTestKey()
+		public void ConstructorTestKey()
 		{
 			TripleDESCrypto crypto = new TripleDESCrypto();
 			Assert.IsNotNull(crypto.Key);
 		}
 		[TestMethod]
-		public void EmptyConstructorTestIV()
+		public void ConstructorTestKeyIV()
 		{
 			TripleDESCrypto crypto = new TripleDESCrypto();
 			Assert.IsNotNull(crypto.IV);
