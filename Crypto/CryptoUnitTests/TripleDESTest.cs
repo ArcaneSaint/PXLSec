@@ -68,6 +68,19 @@ namespace CryptoUnitTests
 			byte[] result = crypto.Decrypt(crypt);
 			CollectionAssert.AreEqual(start, result);
 		}
+		[TestMethod]
+		public void EncryptDecryptNewCrypto()
+		{
+			TripleDESCrypto crypto = new TripleDESCrypto(VALIDKEY, VALIDIV);
+			byte[] start = new byte[1];
+			start[0] = (byte)'a';
+			byte[] crypt = crypto.Encrypt(start);
+
+			TripleDESCrypto decrypto = new TripleDESCrypto(crypto.Key, crypto.IV);
+
+			byte[] result = decrypto.Decrypt(crypt);
+			CollectionAssert.AreEqual(start, result);
+		}
 		#endregion
 	}
 }
