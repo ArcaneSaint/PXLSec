@@ -10,10 +10,12 @@ namespace Crypto
 	public class RSACrypto
 	{
 		RSACryptoServiceProvider provider;
-		#region properties
+		#region Properties
 
-		public string PublicPrivateKeyXML { get; set; }
-		public string PublicKeyOnlyXML { get; set; }
+		private string publicPrivateKeyXML;
+		public string PublicPrivateKeyXML { get { return publicPrivateKeyXML;} }
+		private string publicKeyOnlyXML;
+		public string PublicKeyOnlyXML { get { return publicKeyOnlyXML;} }
 
 		#endregion
 		#region Constructors
@@ -23,25 +25,40 @@ namespace Crypto
 		public RSACrypto()
 		{
 			provider = new RSACryptoServiceProvider(2048); // Generate a new 2048 bit RSA key
-			PublicPrivateKeyXML = provider.ToXmlString(true);
-			PublicKeyOnlyXML = provider.ToXmlString(false);
+			publicPrivateKeyXML = provider.ToXmlString(true);
+			publicKeyOnlyXML = provider.ToXmlString(false);
 		}
-
-		public RSACrypto(string publicKeyXML)
+		/// <summary>
+		/// Initializes A new RSACrypto instance with given key.
+		/// </summary>
+		/// <param name="keyXML">The XML containing the key.</param>
+		public RSACrypto(string keyXML)
 		{
 			provider = new RSACryptoServiceProvider(2048);
-			provider.FromXmlString(publicKeyXML);
+			provider.FromXmlString(keyXML);
 		}
-
 		#endregion
-
+		#region Encryption
+		/// <summary>
+		/// Encrypts data using this RSACrypto instance's public key
+		/// </summary>
+		/// <param name="data">data to be encrypted</param>
+		/// <returns>encrypted data</returns>
 		public byte[] Encrypt(byte[] data)
 		{
 			return provider.Encrypt(data, true);
 		}
+		#endregion
+		#region Decryption
+		/// <summary>
+		/// Decrypts data using this RSACrypto instance's private key
+		/// </summary>
+		/// <param name="data">data to be decrypted</param>
+		/// <returns>decrypted data</returns>
 		public byte[] Decrypt(byte[] data)
 		{
 			return provider.Decrypt(data, true);
 		}
+		#endregion
 	}
 }
