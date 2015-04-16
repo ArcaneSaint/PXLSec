@@ -53,6 +53,7 @@
     <Compile Include="RSATest.cs" />
     <Compile Include="TripleDESTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MD5CryptoTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Crypto\Crypto.csproj">
