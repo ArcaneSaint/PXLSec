@@ -11,7 +11,7 @@ namespace Crypto
 	public class TripleDESCrypto
 	{
 		TripleDESCryptoServiceProvider provider;
-		#region properties
+		#region Properties
 		/// <summary>
 		/// The Key used for encrypting/decrypting
 		/// </summary>
