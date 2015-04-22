@@ -48,6 +48,16 @@ namespace Crypto
 		{
 			return provider.Encrypt(data, true);
 		}
+		/// <summary>
+		/// Encrypts data using this RSACrypto instance's public key
+		/// </summary>
+		/// <param name="data">string holding data to be encrypted</param>
+		/// <returns>string holding encrypted data</returns>
+		public string Encrypt(string data)
+		{
+			byte[] dataBytes = Convert.FromBase64String(data);
+			return Convert.ToBase64String(provider.Encrypt(dataBytes, true));
+		}
 		#endregion
 		#region Decryption
 		/// <summary>
@@ -58,6 +68,16 @@ namespace Crypto
 		public byte[] Decrypt(byte[] data)
 		{
 			return provider.Decrypt(data, true);
+		}
+		/// <summary>
+		/// Decrypts data using this RSACrypto instance's private key
+		/// </summary>
+		/// <param name="data">string holding data to be decrypted</param>
+		/// <returns>string holding decrypted data</returns>
+		public string Decrypt(string data)
+		{
+			byte[] dataBytes = Convert.FromBase64String(data);
+			return Convert.ToBase64String(provider.Decrypt(dataBytes, true));
 		}
 		#endregion
 	}

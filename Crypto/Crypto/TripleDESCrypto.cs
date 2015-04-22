@@ -20,6 +20,7 @@ namespace Crypto
 		/// The Initialization Vector used for encrypting/decrypting
 		/// </summary>
 		public byte[] IV { get { return provider.IV; } }
+		public string ConstructorString { get { return Convert.ToBase64String(IV) + Convert.ToBase64String(Key); } }
 		#endregion
 		#region Constructors
 		/// <summary>
@@ -61,11 +62,11 @@ namespace Crypto
 		/// </summary>
 		/// <param name="source">The string to be encrypted</param>
 		/// <returns>An array of encrypted bytes</returns>
-		public byte[] Encrypt(string source)
+		public string Encrypt(string source)
 		{
-			byte[] messageBytes = new byte[source.Length * sizeof(char)];
-			System.Buffer.BlockCopy(source.ToCharArray(), 0, messageBytes, 0, messageBytes.Length);
-			return Encrypt(messageBytes);
+			byte[] messageBytes = Convert.FromBase64String(source);
+			//System.Buffer.BlockCopy(source.ToCharArray(), 0, messageBytes, 0, messageBytes.Length);
+			return Convert.ToBase64String(Encrypt(messageBytes));
 		}
 		/// <summary>
 		/// Encrypts an array of bytes with TripleDES encryption, using this TripleDESCrypto instance's Key and IV
