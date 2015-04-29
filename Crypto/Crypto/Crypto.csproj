@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +42,7 @@
   <ItemGroup>
     <Compile Include="MD5Crypto.cs" />
     <Compile Include="RSACrypto.cs" />
+    <Compile Include="SteganoCrypto.cs" />
     <Compile Include="TripleDESCrypto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

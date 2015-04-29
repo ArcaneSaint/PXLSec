@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using cryptogui.Pages;
 
 namespace cryptogui
 {
@@ -24,13 +25,15 @@ namespace cryptogui
         public MainWindow()
         {
             InitializeComponent();
+			this.Content = new LoginPage();
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
 
-
+			//ContentFrame.Navigate()
         }
+
     }
 }
