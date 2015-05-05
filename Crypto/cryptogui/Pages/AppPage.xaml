@@ -14,5 +14,7 @@
 		</TabItem>
 		<TabItem x:Name="itemThree" Header="EncryptFile">
 		</TabItem>
+		<TabItem x:Name="itemFour" Header="DecryptFile">
+		</TabItem>
 	</TabControl>
 </Page>

@@ -65,6 +65,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\FileDecryptPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\FileEncryptPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,6 +93,9 @@
     </Compile>
     <Compile Include="Pages\EncryptPage.xaml.cs">
       <DependentUpon>EncryptPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FileDecryptPage.xaml.cs">
+      <DependentUpon>FileDecryptPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FileEncryptPage.xaml.cs">
       <DependentUpon>FileEncryptPage.xaml</DependentUpon>

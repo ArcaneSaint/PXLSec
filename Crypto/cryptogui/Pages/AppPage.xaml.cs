@@ -27,6 +27,7 @@ namespace cryptogui
 			itemOne.Content = new EncryptPage();
 			itemTwo.Content = new DecryptPage(user);
 			itemThree.Content = new FileEncryptPage();
+			itemFour.Content = new FileDecryptPage(user);
 			//Content="Pages/EncryptPage.xaml"
 		}
 	}

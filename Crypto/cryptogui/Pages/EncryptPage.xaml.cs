@@ -70,7 +70,7 @@ namespace cryptogui.Pages
 					byte[] rsaResult = rsa.Encrypt(testBytes);
 					string md5Result = md5.GetHash(message);
 
-					string messageStorePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Messages", user, DateTime.Now.ToString("MMddhhmm"));
+					string messageStorePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Messages", user, DateTime.Now.ToString("dd-MM hh.mm"));
 					if (!Directory.Exists(messageStorePath))
 					{
 						Directory.CreateDirectory(messageStorePath);

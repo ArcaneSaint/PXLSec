@@ -25,6 +25,7 @@ namespace cryptogui.Pages
 		public FileEncryptPage()
 		{
 			InitializeComponent();
+			usersListView.ItemsSource = getUsers();
 		}
 
 		public List<string> getUsers()
@@ -70,14 +71,14 @@ namespace cryptogui.Pages
 					byte[] rsaResult = rsa.Encrypt(testBytes);
 					string md5Result = md5.GetFileChecksum(file);
 
-					string messageStorePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Messages", user, DateTime.Now.ToString("MMddhhmm"));
-					if (!Directory.Exists(messageStorePath))
+					string fileStorePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Files", user, DateTime.Now.ToString("dd-MM hh.mm"));
+					if (!Directory.Exists(fileStorePath))
 					{
-						Directory.CreateDirectory(messageStorePath);
+						Directory.CreateDirectory(fileStorePath);
 					}
-					File.WriteAllBytes(Path.Combine(messageStorePath, "asymfile.crypt"), rsaResult);
-					File.WriteAllBytes(Path.Combine(messageStorePath, "symmfile.crypt"), desResult);
-					File.WriteAllText(Path.Combine(messageStorePath, "hashfile.crypt"), md5Result);
+					File.WriteAllBytes(Path.Combine(fileStorePath, "asymfile.crypt"), rsaResult);
+					File.WriteAllBytes(Path.Combine(fileStorePath, "symmfile.crypt"), desResult);
+					File.WriteAllText(Path.Combine(fileStorePath, "hashfile.crypt"), md5Result);
 					return true;
 				}
 			}
@@ -86,13 +87,12 @@ namespace cryptogui.Pages
 
 		private void btnEncrypt_Click(object sender, RoutedEventArgs e)
 		{
-			/*string user = usersListView.SelectedItem as string;
-			string message = txtboxMessage.Text;
-			if (EncryptMessage(user, message))
+			string user = usersListView.SelectedItem as string;
+			if (EncryptFile(user))
 			{
-				txtboxMessage.Clear();
-				txtboxMessage.Text = "Message encrypted and stored";
-			}*/
+				txtboxFileSelect.Clear();
+				txtboxFileSelect.Text = "Message encrypted and stored";
+			}
 			
 		}
 
@@ -100,7 +100,7 @@ namespace cryptogui.Pages
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
 			ofd.DefaultExt = ".txt";
-			ofd.Filter = "Text documents (.txt)|*.txt";
+			ofd.Filter = "Text documents (.txt)|*.txt|Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png|All Files (*.*)|*.*";
 
 			// Display OpenFileDialog by calling ShowDialog method
 			Nullable<bool> result = ofd.ShowDialog();
