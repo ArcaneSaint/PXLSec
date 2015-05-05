@@ -29,18 +29,15 @@ namespace cryptogui.Pages
 
 		public List<string> getUsers()
 		{
-			//string name = nameField.Text;
 			string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Keys");
 			DirectoryInfo di = new DirectoryInfo(path);
 			List<string> results = new List<string>();
-			//List<string> users = new List<string>();
 
 			foreach (var dir in di.GetDirectories())
 			{
 				results.Add(dir.Name);
 			}
 			return results;
-			//lblError.Content = "Invalid name/password.";
 		}
 
 		private static byte[] GetBytes(string str)
@@ -50,19 +47,14 @@ namespace cryptogui.Pages
 			return bytes;
 		}
 
-		private void btnEncrypt_Click(object sender, RoutedEventArgs e)
+		private bool EncryptMessage(string user, string message)
 		{
-			string user = usersListView.SelectedItem as string;
-			Console.Write("Done.\n");
-			Console.WriteLine("Write your message");
-			string message = txtboxMessage.Text;
 			byte[] messageBytes = GetBytes(message);
 			if (user != null)
 			{
 				string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Keys", user);
 				using (StreamReader sr = new StreamReader(path + "/public.xml"))
 				{
-					Console.Write("Opening...");
 					string key = sr.ReadToEnd();
 					RSACrypto rsa = new RSACrypto(key);
 					MD5Crypto md5 = new MD5Crypto();
@@ -75,16 +67,8 @@ namespace cryptogui.Pages
 					Buffer.BlockCopy(des.IV, 0, testBytes, 0, des.IV.Length);
 					Buffer.BlockCopy(des.Key, 0, testBytes, des.IV.Length, des.Key.Length);
 
-					//string rsaResult = rsa.Encrypt(des.ConstructorString);
 					byte[] rsaResult = rsa.Encrypt(testBytes);
-					//string rsaResult = Convert.ToBase64String(rsaByteResult);
-
-
 					string md5Result = md5.GetHash(message);
-
-					//byte[] messageBytes = Convert.FromBase64String(message);
-
-					//byte[] resultBytes = rsa.Encrypt(messageBytes);
 
 					string messageStorePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Messages", user, DateTime.Now.ToString("MMddhhmm"));
 					if (!Directory.Exists(messageStorePath))
@@ -94,8 +78,22 @@ namespace cryptogui.Pages
 					File.WriteAllBytes(Path.Combine(messageStorePath, "asymfile.crypt"), rsaResult);
 					File.WriteAllBytes(Path.Combine(messageStorePath, "symmfile.crypt"), desResult);
 					File.WriteAllText(Path.Combine(messageStorePath, "hashfile.crypt"), md5Result);
+					return true;
 				}
 			}
+			return false;
+		}
+
+		private void btnEncrypt_Click(object sender, RoutedEventArgs e)
+		{
+			string user = usersListView.SelectedItem as string;
+			string message = txtboxMessage.Text;
+			if (EncryptMessage(user, message))
+			{
+				txtboxMessage.Clear();
+				txtboxMessage.Text = "Message encrypted and stored";
+			}
+			
 		}
 	}
 }

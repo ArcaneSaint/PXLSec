@@ -20,7 +20,7 @@
 		</ListView>
 
 		<Label Grid.Column="1" Grid.Row="0" x:Name="lbltextbox"></Label>
-		<TextBox x:Name="txtboxMessage" Grid.Column="1" Grid.Row="0" Margin="10,10,10,10">
+		<TextBox x:Name="txtboxMessage" Grid.Column="1" Grid.Row="0" Margin="10,10,10,10" AcceptsReturn="True">
 		</TextBox>
 		<Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" x:Name="btnEncrypt" Click="btnEncrypt_Click">
 			Encrypt
