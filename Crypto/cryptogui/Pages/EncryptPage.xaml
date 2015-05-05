@@ -16,17 +16,13 @@
 			<RowDefinition Height="4*"></RowDefinition>
 			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
-		<ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
-			<ListViewItem>Freddy</ListViewItem>
-			<ListViewItem>Jean</ListViewItem>
-			<ListViewItem>Michael</ListViewItem>
-			<ListViewItem>Trevor</ListViewItem>
-			<ListViewItem>Franklin</ListViewItem>
+		<ListView x:Name="usersListView"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
 		</ListView>
-		<TextBox Grid.Column="1" Grid.Row="0" Margin="10,10,10,10">
-			
+
+		<Label Grid.Column="1" Grid.Row="0" x:Name="lbltextbox"></Label>
+		<TextBox x:Name="txtboxMessage" Grid.Column="1" Grid.Row="0" Margin="10,10,10,10">
 		</TextBox>
-		<Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
+		<Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" x:Name="btnEncrypt" Click="btnEncrypt_Click">
 			Encrypt
 		</Button>
 	</Grid>
