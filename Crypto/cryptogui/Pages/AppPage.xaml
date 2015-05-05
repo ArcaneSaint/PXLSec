@@ -10,5 +10,9 @@
 	<TabControl x:Name="tabcontrol" Margin="20,20,20,20">
 		<TabItem x:Name="itemOne" Header="Encrypt">
 		</TabItem>
+		<TabItem x:Name="itemTwo" Header="Decrypt">
+		</TabItem>
+		<TabItem x:Name="itemThree" Header="EncryptFile">
+		</TabItem>
 	</TabControl>
 </Page>

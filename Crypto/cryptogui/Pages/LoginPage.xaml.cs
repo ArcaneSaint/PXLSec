@@ -40,7 +40,7 @@ namespace cryptogui.Pages
 				{
 					if (dir.GetFiles().Length >= 2 && dir.Name == name)
 					{
-						(Window.GetWindow(this) as MainWindow).Content = new AppPage();
+						(Window.GetWindow(this) as MainWindow).Content = new AppPage(name);
 						return;
 						//(Window.GetWindow(this) as MainWindow).ContentFrame.Navigate(typeof(AppPage));
 					}

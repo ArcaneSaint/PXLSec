@@ -21,10 +21,12 @@ namespace cryptogui
 	/// </summary>
 	public partial class AppPage : Page
 	{
-		public AppPage()
+		public AppPage(string user)
 		{
 			InitializeComponent();
 			itemOne.Content = new EncryptPage();
+			itemTwo.Content = new DecryptPage(user);
+			itemThree.Content = new FileEncryptPage();
 			//Content="Pages/EncryptPage.xaml"
 		}
 	}
