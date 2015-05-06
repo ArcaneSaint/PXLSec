@@ -21,14 +21,42 @@ namespace cryptogui
 	/// </summary>
 	public partial class AppPage : Page
 	{
+		string user;
+		public void refresh()
+		{
+			itemOne.Content = new EncryptPage();
+			itemTwo.Content = new DecryptPage(user);
+			itemThree.Content = new FileEncryptPage();
+			itemFour.Content = new FileDecryptPage(user);
+		}
+
 		public AppPage(string user)
 		{
 			InitializeComponent();
+			this.user = user;
 			itemOne.Content = new EncryptPage();
 			itemTwo.Content = new DecryptPage(user);
 			itemThree.Content = new FileEncryptPage();
 			itemFour.Content = new FileDecryptPage(user);
 			//Content="Pages/EncryptPage.xaml"
+		}
+
+		private void miLogout_Click(object sender, RoutedEventArgs e)
+		{
+			(Window.GetWindow(this) as MainWindow).Content = new LoginPage();
+		}
+
+		private void miExit_Click(object sender, RoutedEventArgs e)
+		{
+			Application.Current.Shutdown();
+		}
+
+		private void tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if (e.Source is TabControl)
+			{
+				refresh();
+			}
 		}
 	}
 }

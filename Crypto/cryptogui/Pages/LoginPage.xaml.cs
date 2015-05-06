@@ -33,7 +33,7 @@ namespace cryptogui.Pages
 				string name = nameField.Text;
 				string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Keys");
 				DirectoryInfo di = new DirectoryInfo(path);
-				int offset = 0;
+				//int offset = 0;
 				List<string> users = new List<string>();
 			
 				foreach (var dir in di.GetDirectories())
@@ -51,6 +51,11 @@ namespace cryptogui.Pages
 			{
 				lblError.Content = "Invalid name/password.";
 			};
+		}
+
+		private void btnCreate_Click(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }

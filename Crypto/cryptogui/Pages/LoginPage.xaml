@@ -15,8 +15,9 @@
 				<TextBox x:Name="nameField" Width="150"></TextBox>
 			</StackPanel>
 			<Label x:Name="lblError" Foreground="Crimson"></Label>
-			
+
 			<Button x:Name="btnLogin" Width="100" HorizontalAlignment="Right" Content="Login" Click="btnLogin_Click" />
+			<Button x:Name="btnCreate" Width="100" HorizontalAlignment="Right" Content="Create User" Click="btnCreate_Click" />
 		</StackPanel>
 	</Grid>
 </Page>
