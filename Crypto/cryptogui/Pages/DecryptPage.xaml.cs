@@ -22,14 +22,12 @@ namespace cryptogui.Pages
 	public partial class DecryptPage : UserControl
 	{
 		private RSACrypto rsa;
-		private string user;
 
-		public DecryptPage(string user)
+		public DecryptPage()
 		{
 			InitializeComponent();
-			this.user = user;
-			messagesListView.ItemsSource = getMessages(user);
-			setRSASource(user);
+			messagesListView.ItemsSource = getMessages(Session.User);
+			setRSASource(Session.User);
 		}
 
 		private void setRSASource(string user)
@@ -60,7 +58,7 @@ namespace cryptogui.Pages
 		{
 			//set messagebox to encrypted message
 			string message = null;
-			string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Messages", user, messagesListView.SelectedItem as string);
+			string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Messages", Session.User, messagesListView.SelectedItem as string);
 			byte[] desEncrypted = File.ReadAllBytes(Path.Combine(path, "symmfile.crypt"));
 			message=GetString(desEncrypted);
 			txtboxMessage.Text=message;
@@ -79,7 +77,7 @@ namespace cryptogui.Pages
 				//decrypt message
 				//show decrypted message (in textbox)
 
-				string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Messages", user, messagesListView.SelectedItem as string);
+				string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Messages", Session.User, messagesListView.SelectedItem as string);
 
 				byte[] rsaEncrypted = File.ReadAllBytes(Path.Combine(path, "asymfile.crypt"));
 				byte[] desEncrypted = File.ReadAllBytes(Path.Combine(path, "symmfile.crypt"));

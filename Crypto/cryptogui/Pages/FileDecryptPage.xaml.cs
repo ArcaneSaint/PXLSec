@@ -25,12 +25,11 @@ namespace cryptogui.Pages
 		private RSACrypto rsa;
 		private string user;
 
-		public FileDecryptPage(string user)
+		public FileDecryptPage()
 		{
 			InitializeComponent();
-			filesListView.ItemsSource = GetFiles(user);
-			SetRSASource(user);
-			this.user = user;
+			filesListView.ItemsSource = GetFiles(Session.User);
+			SetRSASource(Session.User);
 		}
 		private void SetRSASource(string user)
 		{

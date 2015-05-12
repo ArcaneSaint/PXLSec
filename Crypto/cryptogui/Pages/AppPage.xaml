@@ -10,8 +10,11 @@
 		<DockPanel>
 			<Menu DockPanel.Dock="Top">
 				<MenuItem Header="_Crypto">
+					<MenuItem x:Name="miDelete" Header="_Delete" Click="miDelete_Click"/>
 					<MenuItem x:Name="miLogout" Header="_Logout" Click="miLogout_Click"/>
 					<MenuItem x:Name="miExit" Header="_Exit" Click="miExit_Click"/>
+				</MenuItem>
+				<MenuItem Header="_About">
 				</MenuItem>
 			</Menu>
 			<StackPanel></StackPanel>
@@ -21,9 +24,11 @@
 			</TabItem>
 			<TabItem x:Name="itemTwo" Header="Decrypt">
 			</TabItem>
-			<TabItem x:Name="itemThree" Header="EncryptFile">
+			<TabItem x:Name="itemThree" Header="Encrypt File">
 			</TabItem>
-			<TabItem x:Name="itemFour" Header="DecryptFile">
+			<TabItem x:Name="itemFour" Header="Decrypt File">
+			</TabItem>
+			<TabItem x:Name="itemFive" Header="Email">
 			</TabItem>
 		</TabControl>
 	</Grid>

@@ -1,6 +1,7 @@
 ﻿using cryptogui.Pages;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace cryptogui
 {
@@ -21,29 +21,28 @@ namespace cryptogui
 	/// </summary>
 	public partial class AppPage : Page
 	{
-		string user;
 		public void refresh()
 		{
 			itemOne.Content = new EncryptPage();
-			itemTwo.Content = new DecryptPage(user);
+			itemTwo.Content = new DecryptPage();
 			itemThree.Content = new FileEncryptPage();
-			itemFour.Content = new FileDecryptPage(user);
+			itemFour.Content = new FileDecryptPage();
+			itemFive.Content = new EmailPage();
 		}
 
-		public AppPage(string user)
+		public AppPage()
 		{
 			InitializeComponent();
-			this.user = user;
 			itemOne.Content = new EncryptPage();
-			itemTwo.Content = new DecryptPage(user);
+			itemTwo.Content = new DecryptPage();
 			itemThree.Content = new FileEncryptPage();
-			itemFour.Content = new FileDecryptPage(user);
+			itemFour.Content = new FileDecryptPage();
 			//Content="Pages/EncryptPage.xaml"
 		}
 
 		private void miLogout_Click(object sender, RoutedEventArgs e)
 		{
-			(Window.GetWindow(this) as MainWindow).Content = new LoginPage();
+			Logout();
 		}
 
 		private void miExit_Click(object sender, RoutedEventArgs e)
@@ -57,6 +56,23 @@ namespace cryptogui
 			{
 				refresh();
 			}
+		}
+
+		private void miDelete_Click(object sender, RoutedEventArgs e)
+		{
+			MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("This will remove your private/public keypair, and any messages for you stored from this computer. Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+			if (messageBoxResult == MessageBoxResult.Yes) 
+			{
+				Directory.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Keys", Session.User), true);
+				Directory.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Messages", Session.User), true);
+				Directory.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Files", Session.User), true);
+				(Window.GetWindow(this) as MainWindow).Title = "Crypto";
+				Logout();
+			}
+		}
+		private void Logout()
+		{
+			(Window.GetWindow(this) as MainWindow).Content = new LoginPage();
 		}
 	}
 }
