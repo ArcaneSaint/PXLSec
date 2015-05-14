@@ -25,20 +25,7 @@ namespace cryptogui.Pages
 		public FileEncryptPage()
 		{
 			InitializeComponent();
-			usersListView.ItemsSource = getUsers();
-		}
-
-		public List<string> getUsers()
-		{
-			string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Keys");
-			DirectoryInfo di = new DirectoryInfo(path);
-			List<string> results = new List<string>();
-
-			foreach (var dir in di.GetDirectories())
-			{
-				results.Add(dir.Name);
-			}
-			return results;
+			usersListView.ItemsSource = Session.GetUsers();
 		}
 
 		private static byte[] GetBytes(string str)
@@ -50,37 +37,33 @@ namespace cryptogui.Pages
 
 		private bool EncryptFile(string user)
 		{
-			if (user != null)
+			string key = Session.GetPublicKey(user);
+			if (key != null)
 			{
-				string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Keys", user);
-				using (StreamReader sr = new StreamReader(path + "/public.xml"))
+				RSACrypto rsa = new RSACrypto(key);
+				MD5Crypto md5 = new MD5Crypto();
+				TripleDESCrypto des = new TripleDESCrypto();
+
+				byte[] messageBytes = File.ReadAllBytes(file);
+
+				byte[] desResult = des.Encrypt(messageBytes);
+
+				byte[] testBytes = new byte[des.IV.Length + des.Key.Length];
+				Buffer.BlockCopy(des.IV, 0, testBytes, 0, des.IV.Length);
+				Buffer.BlockCopy(des.Key, 0, testBytes, des.IV.Length, des.Key.Length);
+
+				byte[] rsaResult = rsa.Encrypt(testBytes);
+				string md5Result = md5.GetFileChecksum(file);
+
+				string fileStorePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Files", user, DateTime.Now.ToString("dd-MM hh.mm"));
+				if (!Directory.Exists(fileStorePath))
 				{
-					string key = sr.ReadToEnd();
-					RSACrypto rsa = new RSACrypto(key);
-					MD5Crypto md5 = new MD5Crypto();
-					TripleDESCrypto des = new TripleDESCrypto();
-
-					byte[] messageBytes = File.ReadAllBytes(file);
-
-					byte[] desResult = des.Encrypt(messageBytes);
-
-					byte[] testBytes = new byte[des.IV.Length + des.Key.Length];
-					Buffer.BlockCopy(des.IV, 0, testBytes, 0, des.IV.Length);
-					Buffer.BlockCopy(des.Key, 0, testBytes, des.IV.Length, des.Key.Length);
-
-					byte[] rsaResult = rsa.Encrypt(testBytes);
-					string md5Result = md5.GetFileChecksum(file);
-
-					string fileStorePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Files", user, DateTime.Now.ToString("dd-MM hh.mm"));
-					if (!Directory.Exists(fileStorePath))
-					{
-						Directory.CreateDirectory(fileStorePath);
-					}
-					File.WriteAllBytes(Path.Combine(fileStorePath, "asymfile.crypt"), rsaResult);
-					File.WriteAllBytes(Path.Combine(fileStorePath, "symmfile.crypt"), desResult);
-					File.WriteAllText(Path.Combine(fileStorePath, "hashfile.crypt"), md5Result);
-					return true;
+					Directory.CreateDirectory(fileStorePath);
 				}
+				File.WriteAllBytes(Path.Combine(fileStorePath, "asymfile.crypt"), rsaResult);
+				File.WriteAllBytes(Path.Combine(fileStorePath, "symmfile.crypt"), desResult);
+				File.WriteAllText(Path.Combine(fileStorePath, "hashfile.crypt"), md5Result);
+				return true;
 			}
 			return false;
 		}
@@ -93,7 +76,7 @@ namespace cryptogui.Pages
 				txtboxFileSelect.Clear();
 				txtboxFileSelect.Text = "Message encrypted and stored";
 			}
-			
+
 		}
 
 		private void btnFileSelect_Click(object sender, RoutedEventArgs e)

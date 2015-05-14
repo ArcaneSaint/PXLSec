@@ -6,7 +6,24 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300">
 
-    <Grid>
-		<Button x:Name="Configure" Click="Configure_Click"></Button>
-    </Grid>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition Width="4*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<ListView x:Name="usersListView"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+		</ListView>
+		<DockPanel Grid.Column="1" Margin="10,10,10,25">
+			<Label DockPanel.Dock="Top">Subject</Label>
+			<TextBox DockPanel.Dock="Top" x:Name="txtbox_Subject"></TextBox>
+			<Label DockPanel.Dock="Top">Recipient</Label>
+			<TextBox DockPanel.Dock="Top" x:Name="txtbox_Recipient"></TextBox>
+			<Label DockPanel.Dock="Top">Message</Label>
+			<TextBox DockPanel.Dock="Top" x:Name="txtbox_Message" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"></TextBox>
+		</DockPanel>
+		<StackPanel DockPanel.Dock="Bottom" Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Right">
+			<Button VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="Configure" Click="Configure_Click" Content="Config"></Button>
+			<Button VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="Send" Click="Send_Click" Content="Send"></Button>
+		</StackPanel>
+	</Grid>
 </UserControl>

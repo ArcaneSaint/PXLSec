@@ -25,6 +25,9 @@ namespace Crypto
 			Client = new SmtpClient();
 			Client.Host = Host;
 			Client.Port = Port;
+			Client.UseDefaultCredentials = false;
+			Client.EnableSsl = true;
+			Client.Credentials = new System.Net.NetworkCredential(Address, Password);
 		}
 
 		public CryptoMail( string address, string password, string host, int port=25) 
@@ -33,10 +36,7 @@ namespace Crypto
 			Host = host;
 			Address = address;
 			Password = password;
-			Client = new SmtpClient(host, port);
-			Client.UseDefaultCredentials = false;
-			Client.EnableSsl = true;
-			Client.Credentials = new System.Net.NetworkCredential(address, password);
+			Init();
 		}
 
 		public void sendMail(string recipient, string message, string subject="CRYPTO MAIL")
