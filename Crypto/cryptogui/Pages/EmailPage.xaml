@@ -11,15 +11,23 @@
 			<ColumnDefinition></ColumnDefinition>
 			<ColumnDefinition Width="4*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
-		<ListView x:Name="usersListView"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
-		</ListView>
+		<!--<ListView x:Name="usersListView"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+		</ListView>-->
 		<DockPanel Grid.Column="1" Margin="10,10,10,25">
 			<Label DockPanel.Dock="Top">Subject</Label>
 			<TextBox DockPanel.Dock="Top" x:Name="txtbox_Subject"></TextBox>
 			<Label DockPanel.Dock="Top">Recipient</Label>
 			<TextBox DockPanel.Dock="Top" x:Name="txtbox_Recipient"></TextBox>
-			<Label DockPanel.Dock="Top">Message</Label>
+
+			<Label DockPanel.Dock="Top">Files</Label>
+			<TextBox DockPanel.Dock="Top" x:Name="txtbox_AsymFileSelect" MinWidth="200" IsEnabled="False"></TextBox>
+			<TextBox DockPanel.Dock="Top" x:Name="txtbox_SymmFileSelect" MinWidth="200" IsEnabled="False"></TextBox>
+			<TextBox DockPanel.Dock="Top" x:Name="txtbox_HashFileSelect" MinWidth="200" IsEnabled="False"></TextBox>
+			<Button DockPanel.Dock="Top" x:Name="btnFileSelect" Click="btnFileSelect_Click">Select File</Button>
+			<CheckBox x:Name="chkbox_PubKey" DockPanel.Dock="Top" Content="Attach public key" IsChecked="True"></CheckBox>
+			<!--<Label DockPanel.Dock="Top">Message</Label>
 			<TextBox DockPanel.Dock="Top" x:Name="txtbox_Message" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"></TextBox>
+			txtboxFileSelect-->
 		</DockPanel>
 		<StackPanel DockPanel.Dock="Bottom" Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Right">
 			<Button VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="Configure" Click="Configure_Click" Content="Config"></Button>

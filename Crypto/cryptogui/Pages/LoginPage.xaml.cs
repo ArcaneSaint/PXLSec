@@ -26,7 +26,7 @@ namespace cryptogui.Pages
 		{
 			InitializeComponent();
 			nameField.Text = name;
-			
+
 		}
 
 		private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -43,15 +43,7 @@ namespace cryptogui.Pages
 				{
 					if (dir.GetFiles().Length >= 2 && dir.Name.ToLower() == name)
 					{
-						(Window.GetWindow(this) as MainWindow).Title = "Crypto (" + name + ")";
-						Session.User = name;
-						string mailpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Keys", name, "mailsettings.xml");
-						using (StreamReader sr = new StreamReader(mailpath))
-						{
-							XmlSerializer sx = new XmlSerializer(typeof(CryptoMail));
-							Session.Mail = (CryptoMail)sx.Deserialize(sr);
-						}
-						(Window.GetWindow(this) as MainWindow).Content = new AppPage();
+						StartSession(name);
 						return;
 					}
 				}
@@ -82,11 +74,37 @@ namespace cryptogui.Pages
 				{
 					sw.Write(rsa.PublicKeyOnlyXML);
 				}
-				Session.User = name;
-				(Window.GetWindow(this) as MainWindow).Content = new AppPage();
+				StartSession(name);
 			}
 			nameField.Text = "User with that name already exists";
-				//(Window.GetWindow(this) as MainWindow).Content = new RegisterPage(this);
+			//(Window.GetWindow(this) as MainWindow).Content = new RegisterPage(this);
+		}
+
+		private void StartSession(string name)
+		{
+			(Window.GetWindow(this) as MainWindow).Title = "Crypto (" + name + ")";
+			Session.User = name;
+			SetMail(name);
+			(Window.GetWindow(this) as MainWindow).Content = new AppPage();
+
+		}
+
+		private bool SetMail(string name)
+		{
+			try
+			{
+				string mailpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Keys", name, "mailsettings.xml");
+				using (StreamReader sr = new StreamReader(mailpath))
+				{
+					XmlSerializer sx = new XmlSerializer(typeof(CryptoMail));
+					Session.Mail = (CryptoMail)sx.Deserialize(sr);
+				}
+				return true;
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
 		}
 	}
 }

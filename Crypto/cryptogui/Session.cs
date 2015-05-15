@@ -55,6 +55,7 @@ namespace cryptogui
 			}
 			catch (Exception e)
 			{
+				Console.Error.WriteLine(e);
 				return null;
 			}
 		}

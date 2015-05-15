@@ -16,7 +16,7 @@
 		</Grid.RowDefinitions>
 		<ListView x:Name="usersListView"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
 		</ListView>
-		<StackPanel Height="50" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Horizontal">
+		<StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Horizontal">
 			<TextBox x:Name="txtboxFileSelect" MinWidth="200" IsEnabled="False"></TextBox>
 			<Button x:Name="btnFileSelect" Click="btnFileSelect_Click">Select File</Button>
 		</StackPanel>

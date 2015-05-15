@@ -1,28 +1,35 @@
 ﻿using Crypto;
 using cryptogui.Windows;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace cryptogui.Pages
 {
 	/// <summary>
 	/// Interaction logic for EmailPage.xaml
 	/// </summary>
-	public partial class EmailPage : UserControl
+	public partial class EmailPage : System.Windows.Controls.UserControl
 	{
+		string asymfile;
+		string symmfile;
+		string hashfile;
+		string user = null;
 		public EmailPage()
 		{
 			InitializeComponent();
@@ -32,50 +39,72 @@ namespace cryptogui.Pages
 		{
 			EmailConfig ec = new EmailConfig();
 			ec.ShowDialog();
-			usersListView.ItemsSource = Session.GetUsers();
+			//usersListView.ItemsSource = Session.GetUsers();
 		}
 
 		private void Send_Click(object sender, RoutedEventArgs e)
 		{
-			string recipient = txtbox_Recipient.Text;
-			string subject = txtbox_Subject.Text;
-			string message = txtbox_Message.Text;
-			
-			byte[] messageBytes = Session.GetBytes(message);
-
-			string key = Session.GetPublicKey(user);
-			if (key != null)
+			if (asymfile != null)
 			{
-				RSACrypto rsa = new RSACrypto(key);
-				MD5Crypto md5 = new MD5Crypto();
-				TripleDESCrypto des = new TripleDESCrypto();
+				string recipient = txtbox_Recipient.Text;
+				string subject = txtbox_Subject.Text;
 
+				MailMessage mailmessage = Session.Mail.CreateMessage(recipient, subject);
+				mailmessage.Attachments.Add(new Attachment(asymfile));
+				mailmessage.Attachments.Add(new Attachment(symmfile));
+				mailmessage.Attachments.Add(new Attachment(hashfile));
 
-				byte[] desResult = des.Encrypt(messageBytes);
-
-				byte[] testBytes = new byte[des.IV.Length + des.Key.Length];
-				Buffer.BlockCopy(des.IV, 0, testBytes, 0, des.IV.Length);
-				Buffer.BlockCopy(des.Key, 0, testBytes, des.IV.Length, des.Key.Length);
-
-				byte[] rsaResult = rsa.Encrypt(testBytes);
-				string md5Result = md5.GetHash(message);
-
-				string messageStorePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Messages", user, DateTime.Now.ToString("dd-MM hh.mm"));
-				if (!Directory.Exists(messageStorePath))
+				if (chkbox_PubKey.IsChecked.Value)
 				{
-					Directory.CreateDirectory(messageStorePath);
+					//attach public key
+					mailmessage.Attachments.Add(new Attachment(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto","Keys",Session.User,"public.xml")));
 				}
-				File.WriteAllBytes(Path.Combine(messageStorePath, "asymfile.crypt"), rsaResult);
-				File.WriteAllBytes(Path.Combine(messageStorePath, "symmfile.crypt"), desResult);
-				File.WriteAllText(Path.Combine(messageStorePath, "hashfile.crypt"), md5Result);
-				return true;
+				Session.Mail.SendMail(mailmessage);
+				txtbox_Recipient.Clear();
+				txtbox_Subject.Clear();
+				txtbox_AsymFileSelect.Clear();
+				txtbox_SymmFileSelect.Clear();
+				txtbox_HashFileSelect.Clear();
 			}
-
-
-
-			Session.Mail.sendMail(recipient, message, subject);
 		}
 
-		
+		private void btnFileSelect_Click(object sender, RoutedEventArgs e)
+		{
+			// FolderBrowserDialog fbd = new FolderBrowserDialog();
+			FolderBrowserDialog ofd = new FolderBrowserDialog();
+			
+			ofd.SelectedPath = (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Files"));
+			//ofd.DefaultExt = ".crypt";
+			//ofd.Filter = "Crypto files|*.crypt";
+
+			// Display OpenFileDialog by calling ShowDialog method
+			System.Windows.Forms.DialogResult result = ofd.ShowDialog();
+
+			// Get the selected file name and display in a TextBox
+			if (result == DialogResult.OK)
+			{
+				try
+				{
+					//Get selected directory
+
+					// Open asym document
+					asymfile = Path.Combine(ofd.SelectedPath, "asymfile.crypt");
+					symmfile = Path.Combine(ofd.SelectedPath, "symmfile.crypt");
+					hashfile = Path.Combine(ofd.SelectedPath, "hashfile.crypt");
+
+					string asymfilename = "asymfile.crypt";
+					string symmfilename = "symmfile.crypt";
+					string hashfilename = "hashfile.crypt";
+					txtbox_AsymFileSelect.Text = asymfilename;
+					txtbox_SymmFileSelect.Text = symmfilename;
+					txtbox_HashFileSelect.Text = hashfilename;
+				} catch(Exception ex)
+				{
+					txtbox_AsymFileSelect.Text = "Error";
+					txtbox_SymmFileSelect.Text = "Error";
+					txtbox_HashFileSelect.Text = "Error";
+				}
+			}
+		}
 	}
 }

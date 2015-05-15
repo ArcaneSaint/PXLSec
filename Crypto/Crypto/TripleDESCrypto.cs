@@ -98,16 +98,15 @@ namespace Crypto
 		{
 			ICryptoTransform transform = provider.CreateDecryptor(provider.Key, provider.IV);
 			MemoryStream memStream = new MemoryStream();
-			CryptoStream cryptoStream = new CryptoStream(memStream, transform, CryptoStreamMode.Write);
-
-			cryptoStream.Write(source, 0, source.Length);
-			cryptoStream.FlushFinalBlock();
-
-			byte[] result = new byte[memStream.Length];
-			memStream.Position = 0;
-			memStream.Read(result, 0, result.Length);
-
-			return result;
+			using(CryptoStream cryptoStream = new CryptoStream(memStream, transform, CryptoStreamMode.Write))
+			{
+				cryptoStream.Write(source, 0, source.Length);
+				cryptoStream.FlushFinalBlock();
+				byte[] result = new byte[memStream.Length];
+				memStream.Position = 0;
+				memStream.Read(result, 0, result.Length);
+				return result;
+			}
 		}
 		#endregion
 	}

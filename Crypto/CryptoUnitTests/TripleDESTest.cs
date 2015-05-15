@@ -16,7 +16,7 @@ namespace CryptoUnitTests
 
 		#region ConstructorTests
 		[TestMethod]
-		public void EmpytConstructor()
+		public void EmptyConstructor()
 		{
 			TripleDESCrypto crypto = new TripleDESCrypto();
 			Assert.IsNotNull(crypto);

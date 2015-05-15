@@ -24,14 +24,14 @@ namespace cryptogui.Pages
 		public EncryptPage()
 		{
 			InitializeComponent();
-			Session.GetUsers();
+			usersListView.ItemsSource= Session.GetUsers();
 		}
 
 		
 
 		private bool EncryptMessage(string user, string message)
 		{
-			byte[] messageBytes = GetBytes(message);
+			byte[] messageBytes = Session.GetBytes(message);
 
 			string key = Session.GetPublicKey(user);
 			if (key != null)

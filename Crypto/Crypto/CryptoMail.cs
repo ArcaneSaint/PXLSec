@@ -30,7 +30,7 @@ namespace Crypto
 			Client.Credentials = new System.Net.NetworkCredential(Address, Password);
 		}
 
-		public CryptoMail( string address, string password, string host, int port=25) 
+		public CryptoMail(string address, string password, string host, int port=25) 
 		{
 			Port = port;
 			Host = host;
@@ -39,7 +39,26 @@ namespace Crypto
 			Init();
 		}
 
-		public void sendMail(string recipient, string message, string subject="CRYPTO MAIL")
+		public MailMessage CreateMessage(string recipient, string subject)
+		{
+			MailMessage mail = new MailMessage()
+			{
+				From = new MailAddress(Address),
+				Subject = subject,
+				IsBodyHtml = false,
+				Body = "Send via Crypto app."
+			};
+			mail.To.Add(recipient);
+
+			return mail;
+		}
+
+		public void SendMail(MailMessage mail)
+		{
+			Client.Send(mail);
+		}
+
+		public void SendMail(string recipient, string message, string subject)
 		{
 			if (Address != null)
 			{
@@ -55,22 +74,4 @@ namespace Crypto
 		}
 
 	}
-
-	/*
-		private void sendPXLMail(string recipient, string clientURL, string caretakerURL)
-		{
-			SmtpClient client = new SmtpClient("smtp.office365.com");
-			var mail = new MailMessage();
-			mail.From = new MailAddress("11308355@student.pxl.be");
-			mail.To.Add(recipient);
-			mail.Subject = "Questionnaire " + DateTime.Now.ToString();
-			mail.IsBodyHtml = true;
-			string body = "Link voor mantelzorger: http://finahfrontend.azurewebsites.net/questionnaire?id=" + caretakerURL + "\n Link voor patiënt: http://finahfrontend.azurewebsites.net/questionnaire?id=" + clientURL;
-			mail.Body = body;
-			client.Port = 587;
-			client.UseDefaultCredentials = false;
-			client.Credentials = new System.Net.NetworkCredential("11308355@student.pxl.be", "#####");
-			client.EnableSsl = true;
-			client.Send(mail);
-		}*/
 }
