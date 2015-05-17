@@ -23,7 +23,6 @@ namespace cryptogui.Pages
 	public partial class FileDecryptPage : UserControl
 	{
 		private RSACrypto rsa;
-		private string user;
 
 		public FileDecryptPage()
 		{
@@ -63,7 +62,7 @@ namespace cryptogui.Pages
 			{
 				try
 				{
-					string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Files", user, filesListView.SelectedItem as string);
+					string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Files", Session.User, filesListView.SelectedItem as string);
 
 					byte[] rsaEncrypted = File.ReadAllBytes(Path.Combine(path, "asymfile.crypt"));
 					byte[] desEncrypted = File.ReadAllBytes(Path.Combine(path, "symmfile.crypt"));

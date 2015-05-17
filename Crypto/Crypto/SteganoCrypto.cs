@@ -27,13 +27,18 @@ namespace Crypto
 			}
 			return byteArray;
 		}
-
-		public Bitmap EncodePicture(string str, string imagePath)
+		/// <summary>
+		/// Encodes a message within picture.
+		/// </summary>
+		/// <param name="message">Message that will be encoded within the picture.</param>
+		/// <param name="imagePath">Path to the image.</param>
+		/// <returns>An image with the message embedded in it.</returns>
+		public Bitmap EncodePicture(string message, string imagePath)
 		{
 			using (Bitmap image = new Bitmap(imagePath))
 			{
 				int arraycounter = 0;
-				byte[] values = StringToBytes(str);
+				byte[] values = StringToBytes(message);
 				byte R, G, B;
 				for (int i = 0; i < image.Width; i++)
 				{
@@ -79,12 +84,19 @@ namespace Crypto
 			}
 
 		}
-		public bool EncodeSavePicture(string str, string imagePath, string savePath)
+		/// <summary>
+		/// Encodes a message within picture and writes it to the disk.
+		/// </summary>
+		/// <param name="message">Message that will be encoded within the picture.</param>
+		/// <param name="imagePath">Path to the image.</param>
+		/// <param name="savePath">Path where the result should be written.</param>
+		/// <returns>If saving the image succeeded or not.</returns>
+		public bool EncodeSavePicture(string message, string imagePath, string savePath)
 		{
 			using (Bitmap image = new Bitmap(imagePath))
 			{
 				int arraycounter = 0;
-				byte[] values = StringToBytes(str);
+				byte[] values = StringToBytes(message);
 				byte R, G, B;
 				for (int i = 0; i < image.Width; i++)
 				{
@@ -130,35 +142,12 @@ namespace Crypto
 			return false;
 
 		}
-		private string decodePicture(Bitmap encodedPicture, Bitmap originalPicture)
-		{
-			string result = "";
-
-			for (int i = 0; i < originalPicture.Width; i++)
-			{
-				for (int j = 0; j < originalPicture.Height; j++)
-				{
-					System.Drawing.Color newpixel = encodedPicture.GetPixel(i, j);
-					System.Drawing.Color oldpixel = originalPicture.GetPixel(i, j);
-					if (newpixel.R != oldpixel.R)
-					{
-						result += Convert.ToChar((byte)(newpixel.R - oldpixel.R));
-					}
-					if (newpixel.G != oldpixel.G)
-					{
-						result += Convert.ToChar((byte)(newpixel.G - oldpixel.G));
-					}
-					if (newpixel.B != oldpixel.B)
-					{
-						result += Convert.ToChar((byte)(newpixel.B - oldpixel.B));
-					}
-
-				}
-			}
-
-			return result;
-		}
-
+		/// <summary>
+		/// Retrieves a message from an image.
+		/// </summary>
+		/// <param name="encodedPath">Path to the image with a message in it.</param>
+		/// <param name="originalPath">Path to the original source image.</param>
+		/// <returns>The message hidden in the image.</returns>
 		public string decodePicture(string encodedPath, string originalPath)
 		{
 			// byte R, G, B;
@@ -166,11 +155,30 @@ namespace Crypto
 
 			using (Bitmap originalPicture = new Bitmap(originalPath), encodedPicture = new Bitmap(encodedPath))
 			{
-				result = decodePicture(originalPicture, encodedPicture);
+				for (int i = 0; i < originalPicture.Width; i++)
+				{
+					for (int j = 0; j < originalPicture.Height; j++)
+					{
+						System.Drawing.Color newpixel = encodedPicture.GetPixel(i, j);
+						System.Drawing.Color oldpixel = originalPicture.GetPixel(i, j);
+						if (newpixel.R != oldpixel.R)
+						{
+							result += Convert.ToChar((byte)(newpixel.R - oldpixel.R));
+						}
+						if (newpixel.G != oldpixel.G)
+						{
+							result += Convert.ToChar((byte)(newpixel.G - oldpixel.G));
+						}
+						if (newpixel.B != oldpixel.B)
+						{
+							result += Convert.ToChar((byte)(newpixel.B - oldpixel.B));
+						}
+
+					}
+				}
 			}
 
 			return result;
 		}
-
 	}
 }

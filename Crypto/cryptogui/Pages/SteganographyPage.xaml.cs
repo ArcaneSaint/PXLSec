@@ -80,7 +80,7 @@ namespace cryptogui.Pages
 		private void btn_Decrypt_Click(object sender, RoutedEventArgs e)
 		{
 			SteganoCrypto sg = new SteganoCrypto();
-			string message = sg.decodePicture(file, resultFile);
+			string message = sg.decodePicture(resultFile, file);
 			txtbox_Message.Text = message;
 		}
 
