@@ -30,8 +30,7 @@ namespace Crypto
 
 		public Bitmap EncodePicture(string str, string imagePath)
 		{
-			Bitmap image;
-			using (image = new Bitmap(imagePath))
+			using (Bitmap image = new Bitmap(imagePath))
 			{
 				int arraycounter = 0;
 				byte[] values = StringToBytes(str);
@@ -80,8 +79,58 @@ namespace Crypto
 			}
 
 		}
+		public bool EncodeSavePicture(string str, string imagePath, string savePath)
+		{
+			using (Bitmap image = new Bitmap(imagePath))
+			{
+				int arraycounter = 0;
+				byte[] values = StringToBytes(str);
+				byte R, G, B;
+				for (int i = 0; i < image.Width; i++)
+				{
+					for (int j = 0; j < image.Height; j++)
+					{
+						System.Drawing.Color original = image.GetPixel(i, j);
 
-		public string decodePicture(Bitmap encodedPicture, Bitmap originalPicture)
+						if (arraycounter <= values.Length - 1)
+						{
+							R = values[arraycounter];
+							R = (byte)(R + original.R);
+						}
+						else
+						{
+							R = original.R;
+						}
+						if (arraycounter + 1 <= values.Length - 1)
+						{
+							G = values[arraycounter + 1];
+							G = (byte)(G + original.G);
+						}
+						else
+						{
+							G = original.G;
+						}
+						if (arraycounter + 2 <= values.Length - 1)
+						{
+							B = values[arraycounter + 2];
+							B = (byte)(B + original.B);
+						}
+						else
+						{
+							B = original.B;
+						}
+						System.Drawing.Color newpixel = System.Drawing.Color.FromArgb(original.A, R, G, B);
+						image.SetPixel(i, j, newpixel);
+						arraycounter += 3;
+					}
+				}
+				image.Save(savePath);
+				return true;
+			}
+			return false;
+
+		}
+		private string decodePicture(Bitmap encodedPicture, Bitmap originalPicture)
 		{
 			string result = "";
 

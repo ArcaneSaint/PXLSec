@@ -27,7 +27,8 @@ namespace cryptogui
 			itemTwo.Content = new DecryptPage();
 			itemThree.Content = new FileEncryptPage();
 			itemFour.Content = new FileDecryptPage();
-			itemFive.Content = new EmailPage();
+			itemFive.Content = new SteganographyPage();
+			itemSix.Content = new EmailPage();
 		}
 
 		public AppPage()

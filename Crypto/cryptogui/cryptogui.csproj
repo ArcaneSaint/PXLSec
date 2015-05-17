@@ -57,6 +57,9 @@
     <Compile Include="Pages\EmailPage.xaml.cs">
       <DependentUpon>EmailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SteganographyPage.xaml.cs">
+      <DependentUpon>SteganographyPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Session.cs" />
     <Compile Include="Windows\EmailConfig.xaml.cs">
       <DependentUpon>EmailConfig.xaml</DependentUpon>
@@ -120,6 +123,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SteganographyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

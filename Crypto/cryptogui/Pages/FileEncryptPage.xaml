@@ -20,8 +20,7 @@
 			<TextBox x:Name="txtboxFileSelect" MinWidth="200" IsEnabled="False"></TextBox>
 			<Button x:Name="btnFileSelect" Click="btnFileSelect_Click">Select File</Button>
 		</StackPanel>
-		<Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" x:Name="btnEncrypt" Click="btnEncrypt_Click">
-			Encrypt
+		<Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,5,5" x:Name="btnEncrypt" Click="btnEncrypt_Click" Content="Encrypt">
 		</Button>
 	</Grid>
 </UserControl>

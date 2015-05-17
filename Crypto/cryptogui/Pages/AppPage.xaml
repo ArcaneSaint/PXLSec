@@ -28,7 +28,9 @@
 			</TabItem>
 			<TabItem x:Name="itemFour" Header="Decrypt File">
 			</TabItem>
-			<TabItem x:Name="itemFive" Header="Email">
+			<TabItem x:Name="itemFive" Header="Steganografie">
+			</TabItem>
+			<TabItem x:Name="itemSix" Header="email">
 			</TabItem>
 		</TabControl>
 	</Grid>
