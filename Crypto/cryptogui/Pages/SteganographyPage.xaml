@@ -9,9 +9,12 @@
 		<BitmapImage x:Key="bmp_Source" UriSource=""></BitmapImage>
 	</UserControl.Resources>-->
 	<DockPanel VerticalAlignment="Stretch">
-		<TextBox DockPanel.Dock="Top" x:Name="txtbox_Message" HorizontalAlignment="Stretch" AcceptsReturn="True" MinLines="2" MaxLines="5" VerticalScrollBarVisibility="Auto">
-			
-		</TextBox>
+		<DockPanel DockPanel.Dock="Top">
+			<Label DockPanel.Dock="Left">Message: </Label>
+			<TextBox DockPanel.Dock="Left"  x:Name="txtbox_Message" AcceptsReturn="True" MinLines="2" MaxLines="5" VerticalScrollBarVisibility="Auto"  TextWrapping="Wrap">
+			</TextBox>
+		</DockPanel>
+
 		<Grid DockPanel.Dock="Top" MinWidth="300">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"></ColumnDefinition>

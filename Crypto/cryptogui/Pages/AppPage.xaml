@@ -14,10 +14,9 @@
 					<MenuItem x:Name="miDelete" Header="_Delete Account" Click="miDelete_Click"/>
 					<MenuItem x:Name="miExit" Header="_Exit" Click="miExit_Click"/>
 				</MenuItem>
-				<MenuItem Header="_About">
-				</MenuItem>
+				<!--<MenuItem Header="_About">
+				</MenuItem>-->
 			</Menu>
-			<StackPanel></StackPanel>
 		</DockPanel>
 		<TabControl x:Name="tabcontrol" Margin="20,20,20,20" SelectionChanged="tabcontrol_SelectionChanged">
 			<TabItem x:Name="itemOne" Header="Encrypt">

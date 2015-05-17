@@ -72,7 +72,24 @@ namespace cryptogui.Pages
 				txtboxMessage.Clear();
 				txtboxMessage.Text = "Message encrypted and stored";
 			}
+			btnEncrypt.IsEnabled = false;
 
+		}
+
+		private void usersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if (!String.IsNullOrWhiteSpace(txtboxMessage.Text))
+			{
+				btnEncrypt.IsEnabled = true;
+			}
+		}
+
+		private void txtboxMessage_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (usersListView.SelectedIndex >= 0)
+			{
+				btnEncrypt.IsEnabled = true;
+			}
 		}
 	}
 }

@@ -18,7 +18,7 @@
 		</ListView>
 
 		<Label Grid.Column="1" Grid.Row="0" x:Name="lbltextbox"></Label>
-		<TextBox x:Name="txtboxMessage" Grid.Column="1" Grid.Row="0" Margin="10,10,10,10" IsEnabled="False">
+		<TextBox x:Name="txtboxMessage" Grid.Column="1" Grid.Row="0" Margin="10,10,10,10" IsEnabled="False" TextWrapping="Wrap">
 		</TextBox>
 		<Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" x:Name="btnDecrypt" Click="btnDecrypt_Click">
 			Decrypt

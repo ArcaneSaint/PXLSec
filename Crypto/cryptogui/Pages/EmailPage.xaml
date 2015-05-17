@@ -15,13 +15,13 @@
 		</ListView>-->
 		<DockPanel Grid.Column="1" Margin="10,10,10,25">
 			<Label DockPanel.Dock="Top">Subject</Label>
-			<TextBox DockPanel.Dock="Top" x:Name="txtbox_Subject"></TextBox>
+			<TextBox DockPanel.Dock="Top" x:Name="txtbox_Subject" TextChanged="CheckSendReady"></TextBox>
 			<Label DockPanel.Dock="Top">Recipient</Label>
-			<TextBox DockPanel.Dock="Top" x:Name="txtbox_Recipient"></TextBox>
+			<TextBox DockPanel.Dock="Top" x:Name="txtbox_Recipient" TextChanged="CheckSendReady"></TextBox>
 
 			<Label DockPanel.Dock="Top">Files</Label>
-			<TextBox DockPanel.Dock="Top" x:Name="txtbox_AsymFileSelect" MinWidth="200" IsEnabled="False"></TextBox>
-			<TextBox DockPanel.Dock="Top" x:Name="txtbox_SymmFileSelect" MinWidth="200" IsEnabled="False"></TextBox>
+			<TextBox DockPanel.Dock="Top" x:Name="txtbox_AsymFileSelect" MinWidth="200" IsEnabled="False" ></TextBox>
+			<TextBox DockPanel.Dock="Top" x:Name="txtbox_SymmFileSelect" MinWidth="200" IsEnabled="False" ></TextBox>
 			<TextBox DockPanel.Dock="Top" x:Name="txtbox_HashFileSelect" MinWidth="200" IsEnabled="False"></TextBox>
 			<Button DockPanel.Dock="Top" x:Name="btnFileSelect" Click="btnFileSelect_Click">Select File</Button>
 			<CheckBox x:Name="chkbox_PubKey" DockPanel.Dock="Top" Content="Attach public key" IsChecked="True"></CheckBox>
@@ -30,8 +30,8 @@
 			txtboxFileSelect-->
 		</DockPanel>
 		<StackPanel DockPanel.Dock="Bottom" Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Right">
-			<Button VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="Configure" Click="Configure_Click" Content="Config"></Button>
-			<Button VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="Send" Click="Send_Click" Content="Send"></Button>
+			<Button VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="btn_Configure" Click="Configure_Click" Content="Config"></Button>
+			<Button VerticalAlignment="Bottom" HorizontalAlignment="Right" IsEnabled="False" x:Name="btn_Send" Click="Send_Click" Content="Send"></Button>
 		</StackPanel>
 	</Grid>
 </UserControl>

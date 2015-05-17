@@ -26,9 +26,9 @@ namespace cryptogui.Pages
 	/// </summary>
 	public partial class EmailPage : System.Windows.Controls.UserControl
 	{
-		string asymfile;
-		string symmfile;
-		string hashfile;
+		string asymfile = null;
+		string symmfile = null;
+		string hashfile = null;
 		string user = null;
 		public EmailPage()
 		{
@@ -57,7 +57,7 @@ namespace cryptogui.Pages
 				if (chkbox_PubKey.IsChecked.Value)
 				{
 					//attach public key
-					mailmessage.Attachments.Add(new Attachment(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto","Keys",Session.User,"public.xml")));
+					mailmessage.Attachments.Add(new Attachment(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Keys", Session.User, "public.xml")));
 				}
 				Session.Mail.SendMail(mailmessage);
 				txtbox_Recipient.Clear();
@@ -65,6 +65,24 @@ namespace cryptogui.Pages
 				txtbox_AsymFileSelect.Clear();
 				txtbox_SymmFileSelect.Clear();
 				txtbox_HashFileSelect.Clear();
+				asymfile = null;
+				symmfile = null;
+				hashfile = null;
+			}
+			btn_Send.IsEnabled = false;
+		}
+
+		private void CheckSendReady()
+		{
+			if (asymfile != null &&
+				!String.IsNullOrWhiteSpace(txtbox_Recipient.Text) &&
+				!String.IsNullOrWhiteSpace(txtbox_Subject.Text))
+			{
+				btn_Send.IsEnabled = true;
+			}
+			else
+			{
+				btn_Send.IsEnabled = false;
 			}
 		}
 
@@ -72,7 +90,7 @@ namespace cryptogui.Pages
 		{
 			// FolderBrowserDialog fbd = new FolderBrowserDialog();
 			FolderBrowserDialog ofd = new FolderBrowserDialog();
-			
+
 			ofd.SelectedPath = (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AppDevCrypto", "Files"));
 			//ofd.DefaultExt = ".crypt";
 			//ofd.Filter = "Crypto files|*.crypt";
@@ -98,13 +116,19 @@ namespace cryptogui.Pages
 					txtbox_AsymFileSelect.Text = asymfilename;
 					txtbox_SymmFileSelect.Text = symmfilename;
 					txtbox_HashFileSelect.Text = hashfilename;
-				} catch(Exception ex)
+				}
+				catch (Exception ex)
 				{
 					txtbox_AsymFileSelect.Text = "Error";
 					txtbox_SymmFileSelect.Text = "Error";
 					txtbox_HashFileSelect.Text = "Error";
 				}
 			}
+		}
+
+		private void CheckSendReady(object sender, TextChangedEventArgs e)
+		{
+			CheckSendReady();
 		}
 	}
 }
