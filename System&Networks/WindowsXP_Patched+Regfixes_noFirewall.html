@@ -1,0 +1,892 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><title>Nessus Scan Report</title><style type="text/css" media="all">
+	UL.ulist {padding: 0 10px; line-height:25px; margin-bottom:0px; margin-top:0px;};
+	LI.list  {padding: 0 10px; line-height:25px; margin-bottom:0px; margin-top:0px; list-style: disc;}
+	LI.list0 {padding: 0 10px; line-height:25px; margin-bottom:0px; margin-top:0px; list-style: disc; color:#357abd;}
+	LI.list1 {padding: 0 10px; line-height:25px; margin-bottom:0px; margin-top:0px; list-style: disc; color:#4cae4c;}
+	LI.list2 {padding: 0 10px; line-height:25px; margin-bottom:0px; margin-top:0px; list-style: disc; color:#fdc431;}
+	LI.list3 {padding: 0 10px; line-height:25px; margin-bottom:0px; margin-top:0px; list-style: disc; color:#ee9336;}
+	LI.list4 {padding: 0 10px; line-height:25px; margin-bottom:0px; margin-top:0px; list-style: disc; color:#d43f3a;}
+
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		-webkit-text-size-adjust: none;
+	}
+    
+	html, body {
+		font-family: helvetica, arial, sans-serif;
+		width: 100%;
+		color: #263645;
+		font-size: 12px;
+		background: #efefef;
+	}
+
+	a, a:visited, a:active {
+		color: #004a97;
+	}
+
+	a:hover {
+		color: #00253d;
+	}
+
+	.container_16 {
+		margin: 0 auto;
+		padding: 0 14px 14px 14px;
+		background: #fff;
+		border-top: #425363 solid 7px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+		margin-bottom: 20px;
+		border-radius: 0 0 5px 5px;
+	}
+
+	#reportContent {
+		width: 100%;
+	}
+
+	h1.classtitle {
+		padding: 15px 0 10px 0;
+		border-bottom: 1px dotted #ccc;
+		margin: 0 0 15px 0;
+	}
+
+	h2.classtitle {
+		color: #00a5b5;
+		font-weight: normal;
+		font-size: 22px;
+		margin: 0;
+		padding: 0;
+	}
+	
+	h2.date {
+		font-size: 14px;
+		color: #768591;
+		margin: 0;
+		padding: 0;
+		font-weight: normal;
+	}
+	
+	.reportinfo {
+		display: block;
+		width: 100%;
+		font-size: 16px;
+		padding: 0 0 15px 0;
+		margin: 0 0 5px 0;
+		font-weight: normal;
+		border-bottom: 1px dotted #ccc;
+	}
+	
+	.reportpadding {
+		padding: 15px 0 0 0 !important;
+	}
+	
+	.classtoc {
+		display: block;
+		font-size: 18px;
+		color: #777779;
+		padding: 15px 0;
+		margin: 15px 0 0 0;
+	}
+
+	h1.classchapter {
+		background: #425363;
+		color: #fff;
+		font-weight: bold;
+		font-size: 16px;
+		padding: 6px 10px;
+		margin: 10px 0 0 0;
+		border-radius: 4px 4px 0 0;
+	}
+
+	h2.classsection {
+		display: block;
+		background: #425363;
+		color: #fff;
+		font-weight: bold;
+		font-size: 14px;
+		padding: 6px 10px;
+		margin: 30px 0 0 0;
+		border-radius: 4px 4px 0 0;
+	}
+
+	h2.classh1  {
+		display: block;
+		background: #efefef;
+		font-weight: bold;
+		font-size: 13px;
+		padding: 6px 10px;
+	}
+
+	.classtext {
+		font-size: 13px;
+		line-height: 18px;
+	}
+	
+	div#reportContent div span.classtext {
+		padding: 6px 10px;
+		display: inline-block;
+	}
+
+	h2.classsubsection {
+		background: #768591;
+		color: #fff;
+		font-weight: bold;
+		font-size: 13px;
+		padding: 6px 10px;
+	}
+	
+	.classheader h1 {
+		color: #fff;
+		font-weight: bold;
+		font-size: 15px;
+		padding: 0 10px;
+		text-align: center;
+	}
+	
+	.reportinfo b {
+		font-weight: bold;
+	}
+	
+	h3.classtitle  {
+		color: #69737b;
+		font-size: 16px;
+		padding: 0 10px;
+	}
+	
+	.classsection_sub tr, td {
+		color: #053958;
+		font-size: 13px;
+		padding: 0 10px;
+	}
+	
+	td {
+		padding: 6px 10px;
+	}
+	
+	h2.classsection, h2.classsection0, h2.classsection1, h2.classsection2, h2.classsection3, h2.classsection4 {
+		background: #053958;
+		color: #fff;
+		font-weight: bold;
+		font-size: 13px;
+		padding: 6px 10px;
+		margin-bottom: 0px;
+		margin-top: 10px;
+	}
+	
+	.classcell4, h2.classsection4 {
+		background-color: #d43f3a;
+	}
+
+	.classcell3, h2.classsection3 {
+		background-color: #ee9336;
+	}
+
+	.classcell2, h2.classsection2 {
+		background-color: #fdc431;
+	}
+
+	.classcell1, h2.classsection1 {
+		background-color: #4cae4c;
+	}
+
+	.classcell0, h2.classsection0 {
+		background-color: #357abd;
+	}
+
+	
+	#copyright {
+		display: block;
+		width: 100%;
+		text-align: center;
+		font-size: 12px;
+		color: #A9A8A9;
+		padding: 6px 0 20px 0;
+	}
+	
+	#copyright a, #copyright a:visited, #copyright a:active {
+		color: #A9A8A9;
+	}
+	
+	div.icon {
+		display: none;
+	}
+	
+	.nopadding {
+		padding: 0 !important;
+	}
+	
+	body.email h2.classh1 {
+		display: block;
+		margin: 20px 0 0 0;
+		background: #425363;
+		color: #fff;
+		font-weight: bold;
+		font-size: 14px;
+		padding: 6px 10px;
+		border-radius: 4px 4px 0 0;
+	}
+	
+	body.email div#reportContent div span.classtext {
+		padding: 0;
+		display: inline;
+	}
+	
+	body.email h2.tips {
+		background: #004a97 !important;
+	}
+	
+	body.email h2.errors {
+		background: #c00 !important;
+	}
+	
+	body.email h2.classsection {
+		display: none;
+	}
+	
+	.classtoc1 a {
+		font-size: 16px;
+	}
+				
+	.classtoc2 a {
+		font-size: 13px;
+		padding: 0 20px;
+	}
+	
+	h2.classh2  {
+		background: #f8f8f8;
+		font-weight: bold;
+		font-size: 13px;
+		padding: 6px 10px;
+	}
+	
+	.classpre {
+		display: block;
+		font-size: 13px;
+		font-family: Courier New, Courier, monospace;
+		padding: 10px;
+		color: #000;
+	}
+	
+	.classh1_grey h2 {
+		background: #eaeaea;
+		color:#053958;
+		font-size: 13px;
+		padding: 0 10px;
+		margin-top:0px;
+		margin-bottom:2px;
+	}
+ 	
+	@media only screen and (max-device-width: 480px) {
+		html, body {
+			display: block;
+			min-width: 480px;
+			background: #fff;
+		}
+		
+		table {
+			table-layout: auto !important;
+		}
+		
+		table td {
+			word-wrap: break-word;
+		}
+		
+		table.container_16 {
+			width: 100%;
+			padding: 0 4% 20px 4%;
+			background: #fff;
+			border-top: #425363 solid 7px;
+			box-shadow: none !important;
+			margin-bottom: 20px;
+			border-radius: 0;
+		}
+		
+		#copyright {
+			display: block;
+			width: 90%;
+			text-align: center;
+			font-size: 10px;
+			color: #A9A8A9;
+			padding: 5px 0 20px 0;
+			border-top: 1px dotted #ccc;
+			margin: 0 auto;
+			line-height: 16px;
+		}
+		
+		.classtitle img {
+			display: block;
+			margin: 0 auto;
+		}
+	}
+</style><script type="text/javascript">
+		function toggle(divId) {
+			var divObj = document.getElementById(divId);
+			if (divObj) {
+				var displayType = divObj.style.display;
+				if (displayType == "" || displayType == "block") {
+					divObj.style.display = "none";
+				} else {
+					divObj.style.display = "block";
+				}
+			}
+		}
+
+		function ceall(flag) {
+			var divs = document.getElementsByTagName("div");
+			var i = 0;
+			for (i = 0; i < divs.length; i++) {
+				if (divs[i].getAttribute("id") != null && divs[i].getAttribute("id").match('btag-')) {
+					if (flag == 0) {
+						divs[i].style.display = "none";
+					} else {
+						divs[i].style.display = "block";
+					}
+				}
+			}
+		}
+		</script></head><body class=""><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td align="center" valign="top" class="nopadding" style="vertical-align: top"><table cellpadding="0" cellspacing="0" border="0" width="80%" bgcolor="#FFFFFF" class="container_16"><tr><td><table xmlns="" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr><td class="nopadding"><h1 class="classtitle"><img src="data:image/gif;base64,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" width="247" height="68" border="0" alt="Nessus Report" style="display: block;"></h1></td></tr>
+<tr><td class="nopadding"><h2 class="classtitle">Nessus Scan Report</h2></td></tr>
+<tr><td class="nopadding"><h2 class="date">14/May/2015:12:06:36</h2></td></tr>
+<tr><td class="reportpadding"><div class="reportinfo"></div></td></tr>
+<tr><td>
+<h2 class="classtitle">Nessus Home: Commercial use of the report is prohibited</h2>
+<h3 class="classtitle">Any time Nessus is used in a commercial environment you MUST maintain an active subscription to the Nessus Feed in order to be compliant with our license agreement.<a href="http://www.tenable.com/products/nessus" target="_blank">http://www.tenable.com/products/nessus</a>
+</h3>
+</td></tr>
+</table>
+<div id="reportContent"><span xmlns="" class="classtoc">Table Of Contents</span><table xmlns="">
+<tr><td><span class="classtoc1"><a href="#idp26920832">Vulnerabilities By Host</a></span></td></tr>
+<tr><td><table><tr>
+<td width="5%"><table style="table-layout: fixed;" width="10px" height="10px"><tr><td class="nopadding classcell0"></td></tr></table></td>
+<td width="95%"><a href="#idp26919936">192.168.0.142</a></td>
+</tr></table></td></tr>
+</table>
+<h1 xmlns="" class="classchapter" id="idp26920832">Vulnerabilities By Host</h1>
+<table xmlns="">
+<tr width="100%" onclick="ceall(0)" onmouseover="this.style.cursor='pointer'" title="Collapse"><td align="left" width="100%">[-] Collapse All</td></tr>
+<tr width="100%" onclick="ceall(1)" onmouseover="this.style.cursor='pointer'" title="Expand"><td align="left" width="100%">[+] Expand All</td></tr>
+</table>
+<h2 xmlns="" class="classsection" id="idp26919936">192.168.0.142</h2>
+<h2 xmlns="" class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Scan Information</h2>
+<table xmlns="" width="100%">
+<tr>
+<td width="20%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">Start time:</span></td>
+<td width="80%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">Thu May 14 12:04:38 2015</span></td>
+</tr>
+<tr>
+<td width="20%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">End time:</span></td>
+<td width="80%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">Thu May 14 12:06:36 2015</span></td>
+</tr>
+</table>
+<h2 xmlns="" class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Host Information</h2>
+<table xmlns="" width="100%">
+<tr>
+<td width="20%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">DNS Name:</span></td>
+<td width="80%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">192.168.0.142</span></td>
+</tr>
+<tr>
+<td width="20%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">Netbios Name:</span></td>
+<td width="80%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">WINXP</span></td>
+</tr>
+<tr>
+<td width="20%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">IP:</span></td>
+<td width="80%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">192.168.0.142</span></td>
+</tr>
+<tr>
+<td width="20%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">MAC Address:</span></td>
+<td width="80%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">00:0c:29:fc:ea:2b</span></td>
+</tr>
+<tr>
+<td width="20%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">OS:</span></td>
+<td width="80%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">Microsoft Windows XP, Microsoft Windows XP for Embedded Systems</span></td>
+</tr>
+</table>
+<h2 xmlns="" class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Results Summary</h2>
+<table xmlns="" width="100%">
+<tr>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">Critical</span></td>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">High</span></td>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">Medium</span></td>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">Low</span></td>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">Info</span></td>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">Total</span></td>
+</tr>
+<tr>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #d43f3a; font-weight: normal;">0</span></td>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #ee9336; font-weight: normal;">0</span></td>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #fdc431; font-weight: normal;">0</span></td>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #4cae4c; font-weight: normal;">0</span></td>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #357abd; font-weight: normal;">20</span></td>
+<td width="15%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: normal;">20</span></td>
+</tr>
+</table>
+<h2 xmlns="" class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Results Details</h2>
+<h2 xmlns="" class="classsubsection ">0/icmp</h2>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-0/icmp-10114 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">10114 - ICMP Timestamp Request Remote Date Disclosure</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-0/icmp-10114 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to determine the exact time set on the remote host.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">The remote host answers to an ICMP timestamp request.  This allows an attacker to know the date that is set on the targeted machine, which may assist an unauthenticated, remote attacker in defeating time-based authentication protocols.<br> <br>Timestamps returned from machines running Windows Vista / 7 / 2008 / 2008 R2 are deliberately incorrect, but usually within 1000 seconds of the actual system time.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Filter out the ICMP timestamp requests (13), and the outgoing ICMP timestamp replies (14).</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->References</h2>
+<table width="100%">
+<tr>
+<td width="30%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: bold !important;">CVE</span></td>
+<td width="70%" valign="top" class="classcell"> <a href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0524" target="_blank">CVE-1999-0524</a>
+</td>
+</tr>
+<tr>
+<td width="30%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: bold !important;">XREF</span></td>
+<td width="70%" valign="top" class="classcell"> <a href="http://osvdb.org/show/osvdb/94" target="_blank">OSVDB:94</a>
+</td>
+</tr>
+<tr>
+<td width="30%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: bold !important;">XREF</span></td>
+<td width="70%" valign="top" class="classcell"> <a href="http://cwe.mitre.org/data/definitions/200" target="_blank">CWE:200</a>
+</td>
+</tr>
+</table>
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 1999/08/01, Modification date: 2012/06/18</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">icmp/0</h2>
+<span class="classpre">This host returns non-standard timestamps (high bit is set)<br>The ICMP timestamps might be in little endian format (not in network format)<br>The remote clock is synchronized with the local clock.</span>
+</div>
+<h2 xmlns="" class="classsubsection ">0/tcp</h2>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-0/tcp-24786 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">24786 - Nessus Windows Scan Not Performed with Admin Privileges</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-0/tcp-24786 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">The Nessus scan of this host may be incomplete due to insufficient privileges provided.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">The Nessus scanner testing the remote host has been given SMB credentials to log into the remote host, however these credentials do not have administrative privileges. <br> <br>Typically, when Nessus performs a patch audit, it logs into the remote host and reads the version of the DLLs on the remote host to determine if a given patch has been applied or not.  This is the method Microsoft recommends to determine if a patch has been applied. <br> <br>If your Nessus scanner does not have administrative privileges when doing a scan, then Nessus has to fall back to perform a patch audit through the registry which may lead to false positives (especially when using third-party patch auditing tools) or to false negatives (not all patches can be detected through the registry).</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Reconfigure your scanner to use credentials with administrative privileges.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2007/03/12, Modification date: 2013/01/07</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/0</h2>
+<span class="classpre"> <br>It was not possible to connect to '\\WINXP\ADMIN$' with the supplied credentials.</span>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-0/tcp-25220 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">25220 - TCP/IP Timestamps Supported</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-0/tcp-25220 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">The remote service implements TCP timestamps.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">The remote host implements TCP timestamps, as defined by RFC1323.  A side effect of this feature is that the uptime of the remote host can sometimes be computed.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->See Also</h2>
+<table width="100%"><tr><td width="100%" valign="top" class="classcell"> <a href="http://www.ietf.org/rfc/rfc1323.txt" target="_blank">http://www.ietf.org/rfc/rfc1323.txt</a>
+</td></tr></table>
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2007/05/16, Modification date: 2011/03/20</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/0</h2>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-0/tcp-11936 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">11936 - OS Identification</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-0/tcp-11936 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to guess the remote operating system.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Using a combination of remote probes (e.g. TCP/IP, SMB, HTTP, NTP, SNMP, etc.), it is possible to guess the name of the remote operating system in use. It is also sometimes possible to guess the version of the operating system.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2003/12/09, Modification date: 2015/05/12</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/0</h2>
+<span class="classpre"> <br>Remote operating system : Microsoft Windows XP<br>Microsoft Windows XP for Embedded Systems<br>Confidence level : 99<br>Method : MSRPC<br> <br> <br>The remote host is running one of these operating systems : <br>Microsoft Windows XP<br>Microsoft Windows XP for Embedded Systems</span>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-0/tcp-20094 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">20094 - VMware Virtual Machine Detection</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-0/tcp-20094 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">The remote host seems to be a VMware virtual machine.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">According to the MAC address of its network adapter, the remote host is a VMware virtual machine. <br> <br>Since it is physically accessible through the network, ensure that its configuration matches your organization's security policy.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2005/10/27, Modification date: 2011/03/27</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/0</h2>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-0/tcp-54615 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">54615 - Device Type</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-0/tcp-54615 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to guess the remote device type.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Based on the remote operating system, it is possible to determine what the remote system type is (eg: a printer, router, general-purpose computer, etc).</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2011/05/23, Modification date: 2011/05/23</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/0</h2>
+<span class="classpre">Remote device type : general-purpose<br>Confidence level : 99</span>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-0/tcp-35716 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">35716 - Ethernet Card Manufacturer Detection</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-0/tcp-35716 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">The manufacturer can be deduced from the Ethernet OUI.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Each ethernet MAC address starts with a 24-bit 'Organizationally Unique Identifier'.<br>These OUI are registered by IEEE.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->See Also</h2>
+<table width="100%">
+<tr><td width="100%" valign="top" class="classcell"> <a href="http://standards.ieee.org/faqs/OUI.html" target="_blank">http://standards.ieee.org/faqs/OUI.html</a>
+</td></tr>
+<tr><td width="100%" valign="top" class="classcell"> <a href="http://standards.ieee.org/regauth/oui/index.shtml" target="_blank">http://standards.ieee.org/regauth/oui/index.shtml</a>
+</td></tr>
+</table>
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2009/02/19, Modification date: 2011/03/27</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/0</h2>
+<span class="classpre"> <br>The following card manufacturers were identified :<br> <br>00:0c:29:fc:ea:2b : VMware, Inc.</span>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-0/tcp-45590 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">45590 - Common Platform Enumeration (CPE)</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-0/tcp-45590 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to enumerate CPE names that matched on the remote system.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">By using information obtained from a Nessus scan, this plugin reports CPE (Common Platform Enumeration) matches for various hardware and software products found on a host. <br> <br>Note that if an official CPE is not available for the product, this plugin computes the best possible CPE based on the information available from the scan.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->See Also</h2>
+<table width="100%"><tr><td width="100%" valign="top" class="classcell"> <a href="http://cpe.mitre.org/" target="_blank">http://cpe.mitre.org/</a>
+</td></tr></table>
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2010/04/21, Modification date: 2014/11/20</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/0</h2>
+<span class="classpre"> <br>The remote operating system matched the following CPE : <br> <br>  cpe:/o:microsoft:windows_xp</span>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-0/tcp-19506 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">19506 - Nessus Scan Information</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-0/tcp-19506 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Information about the Nessus scan.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">This script displays, for each tested host, information about the scan itself :<br> <br> - The version of the plugin set<br> - The type of scanner (Nessus or Nessus Home)<br> - The version of the Nessus Engine<br> - The port scanner(s) used<br> - The port range scanned<br> - Whether credentialed or third-party patch management    checks are possible<br> - The date of the scan<br> - The duration of the scan<br> - The number of hosts scanned in parallel<br> - The number of checks done in parallel</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2005/08/26, Modification date: 2015/01/20</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/0</h2>
+<span class="classpre">Information about this scan : <br> <br>Nessus version : 6.3.5<br>Plugin feed version : 201505140515<br>Scanner edition used : Nessus Home<br>Scan type : Normal<br>Scan policy used : Basic Network Scan<br>Scanner IP : 192.168.0.149<br>Port scanner(s) : nessus_syn_scanner <br>Port range : default<br>Thorough tests : no<br>Experimental tests : no<br>Paranoia level : 1<br>Report Verbosity : 1<br>Safe checks : yes<br>Optimize the test : yes<br>Credentialed checks : no<br>Patch management checks : None<br>CGI scanning : disabled<br>Web application tests : disabled<br>Max hosts : 30<br>Max checks : 4<br>Recv timeout : 5<br>Backports : None<br>Allow post-scan editing: Yes<br>Scan Start Date : 2015/5/14 12:04 EST<br>Scan duration : 118 sec</span>
+</div>
+<h2 xmlns="" class="classsubsection ">0/udp</h2>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-0/udp-10287 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">10287 - Traceroute Information</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-0/udp-10287 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It was possible to obtain traceroute information.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Makes a traceroute to the remote host.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 1999/11/27, Modification date: 2013/04/11</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">udp/0</h2>
+<span class="classpre">For your information, here is the traceroute from 192.168.0.149 to 192.168.0.142 : <br>192.168.0.149<br>192.168.0.142</span>
+</div>
+<h2 xmlns="" class="classsubsection ">135/tcp</h2>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-135/tcp-11219 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">11219 - Nessus SYN scanner</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-135/tcp-11219 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to determine which TCP ports are open.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">This plugin is a SYN 'half-open' port scanner.  It shall be reasonably quick even against a firewalled target. <br> <br>Note that SYN scans are less intrusive than TCP (full connect) scans against broken services, but they might cause problems for less robust firewalls and also leave unclosed connections on the remote target, if the network is loaded.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Protect your target with an IP filter.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2009/02/04, Modification date: 2014/01/23</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/135</h2>
+<span class="classpre">Port 135/tcp was found to be open</span>
+</div>
+<h2 xmlns="" class="classsubsection ">137/udp</h2>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-137/udp-10150 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">10150 - Windows NetBIOS / SMB Remote Host Information Disclosure</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-137/udp-10150 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to obtain the network name of the remote host.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">The remote host listens on UDP port 137 or TCP port 445 and replies to NetBIOS nbtscan or SMB requests.<br> <br>Note that this plugin gathers information to be used in other plugins but does not itself generate a report.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 1999/10/12, Modification date: 2015/01/12</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">udp/137</h2>
+<span class="classpre">The following 4 NetBIOS names have been gathered :<br> <br> WINXP            = Computer name<br> WORKGROUP        = Workgroup / Domain name<br> WINXP            = File Server Service<br> WORKGROUP        = Browser Service Elections<br> <br>The remote host has the following MAC address on its adapter :<br> <br>   00:0c:29:fc:ea:2b</span>
+</div>
+<h2 xmlns="" class="classsubsection ">139/tcp</h2>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-139/tcp-11011 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">11011 - Microsoft Windows SMB Service Detection</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-139/tcp-11011 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">A file / print sharing service is listening on the remote host.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">The remote service understands the CIFS (Common Internet File System) or Server Message Block (SMB) protocol, used to provide shared access to files, printers, etc between nodes on a network.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2002/06/05, Modification date: 2015/01/12</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/139</h2>
+<span class="classpre"> <br>An SMB server is running on this port.</span>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-139/tcp-11219 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">11219 - Nessus SYN scanner</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-139/tcp-11219 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to determine which TCP ports are open.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">This plugin is a SYN 'half-open' port scanner.  It shall be reasonably quick even against a firewalled target. <br> <br>Note that SYN scans are less intrusive than TCP (full connect) scans against broken services, but they might cause problems for less robust firewalls and also leave unclosed connections on the remote target, if the network is loaded.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Protect your target with an IP filter.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2009/02/04, Modification date: 2014/01/23</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/139</h2>
+<span class="classpre">Port 139/tcp was found to be open</span>
+</div>
+<h2 xmlns="" class="classsubsection ">445/tcp</h2>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-445/tcp-11011 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">11011 - Microsoft Windows SMB Service Detection</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-445/tcp-11011 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">A file / print sharing service is listening on the remote host.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">The remote service understands the CIFS (Common Internet File System) or Server Message Block (SMB) protocol, used to provide shared access to files, printers, etc between nodes on a network.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2002/06/05, Modification date: 2015/01/12</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/445</h2>
+<span class="classpre"> <br>A CIFS server is running on this port.</span>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-445/tcp-10785 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">10785 - Microsoft Windows SMB NativeLanManager Remote System Information Disclosure</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-445/tcp-10785 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to obtain information about the remote operating system.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to get the remote operating system name and version (Windows and/or Samba) by sending an authentication request to port 139 or 445.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2001/10/17, Modification date: 2015/01/12</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/445</h2>
+<span class="classpre">The remote Operating System is : Windows 5.1<br>The remote native lan manager is : Windows 2000 LAN Manager<br>The remote SMB Domain Name is : WINXP</span>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-445/tcp-10394 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">10394 - Microsoft Windows SMB Log In Possible</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-445/tcp-10394 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to log into the remote host.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">The remote host is running a Microsoft Windows operating system or Samba, a CIFS/SMB server for Unix. It was possible to log into it using one of the following accounts :<br> <br>- NULL session<br>- Guest account<br>- Given Credentials</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->See Also</h2>
+<table width="100%">
+<tr><td width="100%" valign="top" class="classcell"> <a href="http://support.microsoft.com/kb/143474" target="_blank">http://support.microsoft.com/kb/143474</a>
+</td></tr>
+<tr><td width="100%" valign="top" class="classcell"> <a href="http://support.microsoft.com/kb/246261" target="_blank">http://support.microsoft.com/kb/246261</a>
+</td></tr>
+</table>
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2000/05/09, Modification date: 2015/03/06</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/445</h2>
+<span class="classpre">- NULL sessions are enabled on the remote host.</span>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-445/tcp-11219 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">11219 - Nessus SYN scanner</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-445/tcp-11219 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to determine which TCP ports are open.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">This plugin is a SYN 'half-open' port scanner.  It shall be reasonably quick even against a firewalled target. <br> <br>Note that SYN scans are less intrusive than TCP (full connect) scans against broken services, but they might cause problems for less robust firewalls and also leave unclosed connections on the remote target, if the network is loaded.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Protect your target with an IP filter.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2009/02/04, Modification date: 2014/01/23</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/445</h2>
+<span class="classpre">Port 445/tcp was found to be open</span>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-445/tcp-26917 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">26917 - Microsoft Windows SMB Registry : Nessus Cannot Access the Windows Registry</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-445/tcp-26917 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Nessus is not able to access the remote Windows Registry.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It was not possible to connect to PIPE\winreg on the remote host.<br> <br>If you intend to use Nessus to perform registry-based checks, the registry checks will not work because the 'Remote Registry Access'<br>service (winreg) has been disabled on the remote host or can not be connected to with the supplied credentials.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2007/10/04, Modification date: 2011/03/27</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/445</h2>
+<span class="classpre">Could not connect to the registry because:<br>Could not connect to \winreg</span>
+</div>
+<span xmlns="" class="classh1_grey"><h2><span class="classsection_sub"><table width="100%"><tr width="100%" onclick="toggle('btag-192.168.0.142-445/tcp-10397 ')" onmouseover="this.style.cursor='pointer'" title="Collapse/Expand">
+<td width="5%" height="50%"><table style="table-layout: fixed;" width="30px" height="15px"><tr width="100%"><td width="100%" class="classcell0"></td></tr></table></td>
+<td align="left" width="85%">10397 - Microsoft Windows SMB LanMan Pipe Server Listing Disclosure</td>
+<td align="right" width="10%">[-/+]</td>
+</tr></table></span></h2></span><div xmlns="" id="btag-192.168.0.142-445/tcp-10397 " style="display: none;">
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Synopsis</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It is possible to obtain network information.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Description</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">It was possible to obtain the browse list of the remote Windows system by sending a request to the LANMAN pipe. The browse list is the list of the nearest Windows systems of the remote host.</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Solution</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">n/a</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Risk Factor</h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">None</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->References</h2>
+<table width="100%"><tr>
+<td width="30%" valign="top" class="classcell"><span class="classtext" style="color: #263645; font-weight: bold !important;">XREF</span></td>
+<td width="70%" valign="top" class="classcell"> <a href="http://osvdb.org/show/osvdb/300" target="_blank">OSVDB:300</a>
+</td>
+</tr></table>
+<h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Plugin Information: </h2>
+<span class="classtext" style="color: #263645; font-weight: normal;">Publication date: 2000/05/09, Modification date: 2015/01/12</span><h2 class="classh1 " style="vertical-align: middle;"><!--[if mso]><img src="cid:#" width="1" height="25" border="0" style="display: block; float: left;">  
+			<![endif]]]-->Ports</h2>
+<h2 class="classh2" style="color: #357abd">tcp/445</h2>
+<span class="classpre"> <br>Here is the browse list of the remote host : <br> <br>HP10092201 ( os : 6.1 )<br>JEROEN7S-WIN ( os : 6.3 )<br>WINXP ( os : 5.1 )</span>
+</div></div></td></tr></table></td></tr></table><div id="copyright">
+   This is a report from the 
+    <a xmlns="" href="http://www.tenable.com/" target="_blank">Nessus Vulnerability Scanner</a>
+   .<br xmlns="">
+   Nessus is published by Tenable Network Security, Inc | 7021 Columbia Gateway Drive Suite 500, Columbia, MD 21046<br xmlns="">
+   © 2015 Tenable Network Security, Inc. All rights reserved.
+   </div></body></html>
